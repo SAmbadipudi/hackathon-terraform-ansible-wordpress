@@ -1,0 +1,9 @@
+---
+php_packages:
+  - php70
+  - php70-mbstring
+  - php70-mysqlnd
+  - mysql
+
+httpd_packages:
+  - httpd

@@ -1,0 +1,29 @@
+---
+- name: remove installed packages
+  shell: yum remove httpd-tools -y
+- name: download php packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ php_packages }}"
+- name: install httpd
+  yum:
+    name: httpd
+    state: present
+- name: download wordpress
+  get_url:
+    url=https://wordpress.org/latest.tar.gz
+    dest=/tmp/wordpress.tar.gz
+- name: Unarchive a file mediawiki file
+  shell: |
+    cd /tmp
+    tar -zxpvf wordpress.tar.gz -C /var/www/html/
+    chown -R root:root /var/www/html/wordpress
+
+- name: Copy sample config file
+  command: mv /var/www/html//wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php creates=/var/www/html/wordpress/wp-config.php
+
+- name: Start service httpd, if not started
+  service:
+    name: httpd
+    state: restarted

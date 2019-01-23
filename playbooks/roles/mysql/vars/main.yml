@@ -1,0 +1,4 @@
+---
+mysql_user: wiki_user
+mysql_password: redhat
+mysql_db_name: wiki_db

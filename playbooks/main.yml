@@ -1,0 +1,33 @@
+---
+##################### Execute First Section (Create VPC, EC2 and Add Host IP as a variable)
+#  - hosts: localhost
+#    connection: local
+#    gather_facts: no
+#    roles:
+#     - ec2-launch
+####################  End of First Section
+####################  Second Section (Configure loadbalancer ansible server)
+  - hosts: all
+    remote_user: ec2-user
+    become: yes
+    roles:
+     - ansibleserver
+
+#  - hosts: all
+#    remote_user: ec2-user
+#    become: yes
+#    roles:
+#     - passwordless
+#
+  - hosts: role_app
+    remote_user: ec2-user
+    become: yes
+    roles:
+     - wordpress
+
+  - hosts: role_db
+    remote_user: ec2-user
+    become: yes
+    roles:
+     - mysql
+

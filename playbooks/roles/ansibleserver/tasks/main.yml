@@ -1,0 +1,50 @@
+---
+- name: Install epel repo
+  shell: rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm --force
+- name: Install ansible server
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ ansible_yum_packages }}"
+- name: Upgrade pip
+  shell: pip install --upgrade pip
+- name: Install boto
+  shell: pip install boto3
+- name: Install AWS-CLI
+  shell: pip install awscli
+- name: Configure Ansible Server
+  synchronize:
+    src: "/root/ansible/"
+    dest: "/root/ansible/"
+    recursive: yes
+#- name: Creating weblogic user
+#  user:
+#    name: weblogic
+#    shell: /bin/bash
+#    group: wheel
+#- name: make direcotry
+#  file:
+#    path: "/home/weblogic/.ssh"
+#    mode: 0700
+#    owner: weblogic
+#    state: directory
+#- name: create empty file
+#  file:
+#    path: "/home/weblogic/.ssh/authorized_keys"
+#    mode: 0600
+#    owner: weblogic
+#    state: touch
+#- name: put pubkey
+#  lineinfile:
+#    path: "/home/weblogic/.ssh/authorized_keys"
+#    mode: 0600
+#    owner: weblogic
+#    line: "{{ pubkey }}"
+#- name: Configure Ansible Server
+#  synchronize:
+#    src: "/root/ansible/"
+#    dest: "/root/ansible/"
+#    recursive: yes
+#- name: Copy Remote-To-Remote (from serverA to serverB)
+#  synchronize: src=/home/weblogic/.ssh/id_rsa.pub dest=/home/weblogic/.ssh/id_rsa.pub.
+#  delegate_to: 3.17.166.148

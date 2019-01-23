@@ -1,0 +1,25 @@
+---
+aws_access_key: "AKIAIBNFTBEXO6CCABJQ"
+aws_secret_key: "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"
+aws_region: "us-east-2"
+## VPC Information
+vpc_name: "Hack_VPC"
+vpc_cidr_block: "172.16.0.0/16"
+# For Security Group Rule
+my_ip: "0.0.0.0"
+
+# Subnets
+public_subnet_1_cidr: "172.16.0.0/24"
+
+#############################
+## Used in parts 2 and 3    #
+#############################
+#Subnets
+private_subnet_1_cidr: "172.16.1.0/24"
+#Ec2 Launch
+ec2_image: "ami-0cd3dfa4e37921605"
+ec2_instance_type: "t2.micro"
+ec2_ansible_Name: "Ansible_Server"
+ec2_apache_Name: "Apache_Server"
+ec2_mysql_Name: "MySql_Server"
+ec2_tag_Environment: "Dev"

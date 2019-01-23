@@ -1,0 +1,5 @@
+---
+wp_mysql_db: wiki_db
+wp_mysql_user: wiki_user
+wp_mysql_password: redhat
+

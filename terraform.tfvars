@@ -1,0 +1,7 @@
+access_key = "AKIAIURXFUG4T5DK654A"
+secret_key = "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"
+region = "us-east-2"
+ami = "ami-0cd3dfa4e37921605"
+key_name = "hack_test"
+sg_ids = "sg-0ae80d42d2202c8b0"
+subnet_ids = "subnet-0af274fbf66494127"
