@@ -20,19 +20,19 @@ resource "aws_instance" "hack_app" {
 	associate_public_ip_address = "true"
 
 }
-#resource "aws_instance" "hack_DB" {
-#        ami = "${var.ami}"
-#        instance_type = "${var.instance_type}"
-#        count = 1
-#        tags {
-#		Role = "db"
-#                Name = "${format("database-%01d",count.index+1)}"
-#        }
-#        key_name = "${var.key_name}"
-#        vpc_security_group_ids = ["${var.sg_ids}"]
-#        subnet_id = "${var.subnet_ids}"
-#        associate_public_ip_address = "true"
-#}
+resource "aws_instance" "hack_DB" {
+        ami = "${var.ami}"
+        instance_type = "${var.instance_type}"
+        count = 1
+        tags {
+		Role = "db"
+                Name = "${format("database-%01d",count.index+1)}"
+        }
+        key_name = "${var.key_name}"
+        vpc_security_group_ids = ["${var.sg_ids}"]
+        subnet_id = "${var.subnet_ids}"
+        associate_public_ip_address = "true"
+}
 
 # Executing Ansible playbook post of infrastructure
 
